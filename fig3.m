@@ -102,3 +102,21 @@ pie([V1_ncs_only,V1_ncs_ldg,V1_ldg_only],'%.2f%%')
 legend({'ncs only','ncs and ldg','ldg only'})
 
 
+%% polar histogram for phase difference
+
+phase_diff=deg2rad(Phase_diff(F1_dominants & non_overlapping_V1));
+% circ_R= circ_r(b);
+% [pval, z] = circ_rtest(b)
+[mu, ul, ll] = circ_mean(phase_diff);
+% [s, s0] = circ_std(b);
+
+figure
+polhist=polarhistogram(phase_diff,25,'EdgeColor','blue','LineWidth',0.2);
+hold on
+polarplot([0,mu],[0,max(polhist.Values)],'r','LineWidth',3)
+title([num2str(sum(F1_dominants)),' units'])
+
+ax = gca;
+ax.FontSize = 14; 
+ax.FontName="Arial";
+set(ax,'linewidth',1)
