@@ -43,7 +43,6 @@ grid on;axis square;  ax = gca; ax.FontSize = 12;ax.FontName = "Arial";
 
 
 %% normalize pupil size
-Pupil_time_ax(1,:) = (Pupil_time_ax(2,:)) + 5*diff(Pupil_time_ax(1,1:2));
 pre_med   = (nanmedian(pupil_diameter_f(:,1:5),2));
 pupil_diameter_f2 = (pupil_diameter_f-pre_med)./pre_med.*100;%./max_pupil;
 
